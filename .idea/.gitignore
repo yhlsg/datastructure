@@ -7,22 +7,11 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-
-.mymetadata
-.checkstyle
-.classpath
-.project
-.class
-.war
-.zip
-.rar
-.idea
+#java
+*.class
+#Intellij idea
+.idea/
+/idea/
+*.ipr
 *.iml
-.settings/*
-/indexes/*
-/out/*
-/src/main/webapp/WEB-INF/classes/*
-/src/main/webapp/userfiles/*
-/out/
-/out
-mobile.sql
+*.iws
