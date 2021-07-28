@@ -20,7 +20,7 @@
 *.iml
 .settings/*
 /indexes/*
-/target/*
+/out/*
 /src/main/webapp/WEB-INF/classes/*
 /src/main/webapp/userfiles/*
 /out/
