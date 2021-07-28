@@ -6,3 +6,23 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+
+
+.mymetadata
+.checkstyle
+.classpath
+.project
+.class
+.war
+.zip
+.rar
+.idea
+*.iml
+.settings/*
+/indexes/*
+/target/*
+/src/main/webapp/WEB-INF/classes/*
+/src/main/webapp/userfiles/*
+/target/
+/target
+mobile.sql
