@@ -16,7 +16,7 @@ public class BinarySearch {
 //        System.out.println(index);
 
         int[] arr = {1, 2,  4, 5};
-        List index = binarySearch2(arr, 0, 4, 3);
+        List index = binarySearch2(arr, 0, arr.length - 1, 3);
         System.out.println(index);
 
     }
