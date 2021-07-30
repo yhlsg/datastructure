@@ -19,8 +19,10 @@ public class HashTableDemo {
 
 
         empHashTable.update(new Emp(11, "薇尔莉特3"));
+
+        System.out.println(empHashTable.find(11));
         empHashTable.del(11);
-        System.out.println(empHashTable);
+//        System.out.println(empHashTable);
     }
 
 }
@@ -47,6 +49,16 @@ class EmpHashTable{
         return "EmpHashTable{" +
                 "empLinkedLists=" + Arrays.toString(empLinkedLists) +
                 '}';
+    }
+
+
+    //查找指定id的员工
+    public Emp find(int id){
+        int address = address(id);
+
+        Emp emp = empLinkedLists[address].find(id);
+        return emp;
+
     }
 
     //删除指定id员工
@@ -91,6 +103,8 @@ class EmpHashTable{
     }
 }
 
+
+
 //单向链表
 class EmpLinkedList{
     //头节点,head为第一个结点
@@ -122,6 +136,30 @@ class EmpLinkedList{
         }
 
         return res;
+    }
+
+    //查找指定id的员工
+    public Emp find(int id){
+        if (head == null){
+            return null;
+        }
+
+        //链表不为空
+        Emp curEmp = head;
+        while (true){
+            if (curEmp.id == id){
+                break;
+            }
+
+            if (curEmp.next == null){
+                curEmp = null;
+            }
+
+            curEmp = curEmp.next;
+        }
+
+        return curEmp;
+
     }
 
     //删除指定id的结点
