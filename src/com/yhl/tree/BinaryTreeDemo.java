@@ -41,10 +41,20 @@ public class BinaryTreeDemo {
 //        binaryTree.postOrder();//2、4、3、1
 
         //比较次数
-        HeroNode result = binaryTree.preOrderSearch(5);//4
+//        HeroNode result = binaryTree.preOrderSearch(5);//4
 //        HeroNode result = binaryTree.infixOrderSearch(5);//3
 //        HeroNode result = binaryTree.postOrderSearch(5);//2
-        System.out.println(result);
+//        System.out.println(result);
+
+        //删除前
+        System.out.println("删除前：");
+        binaryTree.preOrder();//1、2、3、5、4
+
+        binaryTree.delNode(5);
+
+        //删除后
+        System.out.println("删除后：");
+        binaryTree.preOrder();//1、2、3、4
 
 
     }
@@ -68,6 +78,24 @@ class BinaryTree{
 
     public void setRoot(HeroNode root) {
         this.root = root;
+    }
+
+    //删除结点
+    public void delNode(int no){
+        //当前二叉树为空
+        if(root != null){
+            //root结点是否为待删除结点
+            if (root.getNo() == no){
+                root = null;
+                return;
+            //递归删除结点
+            }else {
+                root.delNode(no);
+            }
+        }else {
+            System.out.println("二叉树为空！");
+        }
+
     }
 
     //前序查找
@@ -179,13 +207,39 @@ class HeroNode{
                 '}';
     }
 
+    //删除结点
+    public void delNode(int no){
+        //由于为单向链表，所以要找到待删除结点的前一个
+        //判断左子结点是否为为待删除结点，如果是将其删除
+        if (this.left != null && this.left.no == no){
+            this.left = null;
+            return;
+        }
+
+        //判断右结点是否为待删除结点
+        if (this.right != null && this.right.no == no){
+            this.right = null;
+            return;
+        }
+
+        //如果左子结点不为空，向左递归删除结点
+        if (this.left != null){
+            this.left.delNode(no);
+        }
+
+        //如果右子结点不空，向右递归删除结点
+        if (this.right != null){
+            this.right.delNode(no);
+        }
+    }
+
     /**
      * 前序查找
      * @param no 待查找的员工的编号
      * @return 如果找到，返回该员工，没有找到返回null
      */
     public HeroNode preOrderSearch(int no){
-        System.out.println("前序查找");
+//        System.out.println("前序查找");
         HeroNode res = null;
         //当前结点是否为目标值
         if (this.no == no){
@@ -220,7 +274,7 @@ class HeroNode{
             return res;
         }
 
-        System.out.println("中序查找");
+//        System.out.println("中序查找");
         //判断当前结点是否为目标结点
         if (this.no == no){
             return this;
@@ -255,7 +309,7 @@ class HeroNode{
             return res;
         }
 
-        System.out.println("后序查找");
+//        System.out.println("后序查找");
         //当前结点是否为目标值
         if (this.no == no){
             return this;
