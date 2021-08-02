@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Date;
 
 /**
- * 分治排序：
+ * 归并排序：
  * 80000条数据排序花费的时间：1s不到
  *
  * @author yhl
@@ -37,7 +37,7 @@ public class MergeSort {
         System.out.println("排序前的时间：" + dateString1);
     }
 
-    //分治排序
+    //归并排序
     public static void mergeSort(int[] arr, int left, int right, int[] temp){
         //递归，将数组逐步分成单个数，再将逐步其合并排序
         //在数组内部将数组分成单个数的数组
@@ -69,7 +69,7 @@ public class MergeSort {
         int j = mid + 1;//右边数组的起始索引
         int t = 0;//temp数组的下标
 
-        //1、比较两个数组中值，将较小的数放入temp数组
+        //1、比较两个数组中的值，将较小的数放入temp数组
         while (i <= mid && j <= right){
             if (arr[i] <= arr[j]){
                 temp[t] = arr[i];

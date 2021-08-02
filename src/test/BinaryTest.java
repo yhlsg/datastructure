@@ -17,4 +17,14 @@ public class BinaryTest {
         short i2 = 2;
         short i3 = (short) (i1 + i2);//两个short相加会默认进行类型提升，得到一个int类型的数据
     }
+
+    private void test(){
+        System.out.println("测试！");
+    }
+}
+
+class test{
+    public static void main(String[] args) {
+        BinaryTest binaryTest = new BinaryTest();
+    }
 }
