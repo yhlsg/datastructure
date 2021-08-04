@@ -1,6 +1,7 @@
 package test;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 
 /**
  * BigDecimal 用来对超过16位有效位的数进行精确的运算
@@ -17,5 +18,9 @@ public class BigDecimalTest {
         BigDecimal b2 = new BigDecimal("0.2");
         BigDecimal sum = b1.add(b2);
         System.out.println(sum);//0.3
+
+//        HashMap hashMap = new HashMap();
+//        hashMap.put(1, 2);
+//        System.out.println(hashMap);
     }
 }

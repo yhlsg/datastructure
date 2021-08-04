@@ -62,7 +62,7 @@ public class HuffmanCode {
         String srcFile = "E:\\Saved Pictures\\1.zip";
         String dstFile = "E:\\Saved Pictures\\src2.bmp";
         unFileZip(srcFile, dstFile);
-        //还原不成功，由于赫夫曼编码表是静态的，公用一个，上面的代码没有注释，
+        //还原不成功，由于赫夫曼编码表是静态的，共用一个，上面的代码没有注释，
         //已经执行了一遍从而导致这次压缩时map中已经含有数据，编码表不正确，所以解压不成功
 
 
@@ -209,9 +209,9 @@ public class HuffmanCode {
         for (int i = 0; i < huffmanCodeBytes.length; i++) {
             //为最后一个字节时，不需要补码
             if (i == huffmanCodeBytes.length - 1){
-                bytesStr.append(toByte(huffmanCodeBytes[i], false));
+                bytesStr.append(toBinaryString(huffmanCodeBytes[i], false));
             }else {
-                bytesStr.append(toByte(huffmanCodeBytes[i], true));
+                bytesStr.append(toBinaryString(huffmanCodeBytes[i], true));
             }
         }
 
@@ -267,7 +267,7 @@ public class HuffmanCode {
      * @param flag 标记是否要补位
      * @return
      */
-    public static String toByte(byte b, boolean flag){
+    public static String toBinaryString(byte b, boolean flag){
         //将b转换成为int，方便转换成为二进制
         int temp = b;
         //判断是否需要补位
@@ -310,7 +310,7 @@ public class HuffmanCode {
     }
 
     /**
-     * 获得赫夫曼编码的字节数组
+     * 获得赫夫曼编码后的字节数组
      * @param bytes 原始字符串对应的字节数组
      * @param huffmanCodeMap 赫夫曼编码表
      * @return
@@ -373,6 +373,7 @@ public class HuffmanCode {
 
         return huffmanCodes;
     }
+
     /**
      * 生成赫夫曼编码表
      * 表示将node底下所有的叶子结点都生成
@@ -405,7 +406,7 @@ public class HuffmanCode {
     }
 
 
-    //赫夫曼编码树
+    //构建赫夫曼编码树
     public static Node huffmanCodeTree(List<Node> nodes){
         while (nodes.size() > 1){
             //先将nodes中的结点按照weight权值从小到大排序
