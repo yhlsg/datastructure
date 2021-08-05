@@ -9,17 +9,21 @@ package com.yhl.binarysorttree;
 public class BinarySortTreeDemo {
     public static void main(String[] args) {
         //创建二叉排序树并向其中添加数据
-        int[] arr = {7, 3, 10, 12, 5, 1, 9};
+        int[] arr = {7, 3, 10, 12, 5, 1, 9, 0};
         BinarySortTree binarySortTree = new BinarySortTree();
         for (int i = 0; i < arr.length; i++) {
             binarySortTree.add(new Node(arr[i]));
         }
 
         //删除叶子结点
-//        binarySortTree.delNode(1);
-//        binarySortTree.delNode(5);
-//        binarySortTree.delNode(3);
+        binarySortTree.delNode(1);
+        binarySortTree.delNode(5);
         binarySortTree.delNode(3);
+//        binarySortTree.delNode(0);
+        binarySortTree.delNode(7);
+        binarySortTree.delNode(10);
+        binarySortTree.delNode(9);
+        binarySortTree.delNode(12);
 
         //中序遍历
         binarySortTree.infixOrder();//1, 3, 5, 7, 9, 10, 12
@@ -68,6 +72,50 @@ class BinarySortTree{
             if (parent.right != null && parent.right == targetNode){
                 parent.right = null;
             }
+        //该结点的左右子结点都不为空
+        }else if (targetNode.left != null && targetNode.right != null){
+            //向右子子树寻找最小的结点
+            Node minNode = targetNode.right;
+            while (true){
+                //当该结点的左边为空时，该结点就是最小结点
+                if (minNode.left == null){
+                    break;
+                }
+                minNode = minNode.left;
+            }
+
+            //要先将最小结点删除不然会出现堆溢出
+            //将最小结点删除
+            delNode(minNode.value);
+            //将该结点修改成为最小结点的值
+            targetNode.value = minNode.value;
+
+        //该结点只有一个子结点不为空
+        }else {
+            //左子结点不为空
+            if (targetNode.left != null){
+                //判断该结点是否为root结点
+                if (parent == null){
+                    root = targetNode.left;
+                }else {
+                    if (parent.left == targetNode){
+                        parent.left = targetNode.left;
+                    }else{
+                        parent.right = targetNode.left;
+                    }
+                }
+            }else {
+                if (parent == null){
+                    root = targetNode.right;
+                }else {
+                    if (parent.left == targetNode){
+                        parent.left = targetNode.right;
+                    }else {
+                        parent.right = targetNode.right;
+                    }
+                }
+            }
+
         }
 
 
