@@ -1,5 +1,7 @@
 package test;
 
+import java.util.Stack;
+
 /**
  * 二进制的输出
  * @author yhl
@@ -20,6 +22,7 @@ public class BinaryTest {
          */
         System.out.println(1 << 1);
         System.out.println(1 >> 1);
+
     }
 
     private void test(){
